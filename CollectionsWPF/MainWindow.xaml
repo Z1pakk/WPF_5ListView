@@ -1,0 +1,64 @@
+﻿<Window x:Class="CollectionsWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CollectionsWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="277*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="247*" />
+                <RowDefinition Height="172*" />
+            </Grid.RowDefinitions>
+            <Border Margin="10" BorderBrush="Black" BorderThickness="1" Padding="5">
+                <DockPanel x:Name="dpHero" Grid.Row="0">
+                    <TextBlock 
+                        Text="Виберіть головного героя" 
+                        FontFamily="Calibri" 
+                        Foreground="Gray"
+                        TextAlignment="Center"
+                        FontSize="17"
+                        DockPanel.Dock="Top"/>
+                    <DockPanel LastChildFill="True" DockPanel.Dock="Left">
+                        <Label Foreground="Black" DockPanel.Dock="Top" Content="Ваш вибраний герой:"/>
+                        <Button 
+                            Click="Button_Click" 
+                            Background="GreenYellow" 
+                            Foreground="Black" 
+                            DockPanel.Dock="Bottom" 
+                            Height="50"
+                            VerticalAlignment="Bottom"
+                            x:Name="Choose"
+                            Content="Вибрати" />
+                    </DockPanel>
+                    <ListView x:Name="lvHeroes" DockPanel.Dock="Right" SelectionChanged="lvHeroes_SelectionChanged" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Id}" />
+                                    <TextBlock Margin="10 0 0 0" Text="{Binding Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <!--<ListViewItem>Семен</ListViewItem>
+                        <ListViewItem>Оксана</ListViewItem>
+                        <ListViewItem>Василь</ListViewItem>
+                        <ListViewItem>Едік</ListViewItem>
+                        <ListViewItem>Петро</ListViewItem>-->
+                    </ListView>
+                </DockPanel>
+            </Border>
+        </Grid>
+        <GridSplitter Background="GreenYellow" Grid.Column="0" Width="5" />
+        <ScrollViewer Grid.Column="1">
+            
+        </ScrollViewer>
+    </Grid>
+</Window>
